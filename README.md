@@ -120,7 +120,7 @@ to the group upon registration. She cannot create a new group unless she leaves
 this one.
 - Carol is able to access the join link and send it to her housemates again if needed.
 - As everyone joins the group, they are added to its rotation order. This ends up
-as Dave -> Carol -> Bob -> Alice
+as Dave -> Carol -> Bob -> Alice.
 
 ##### Chore creation
 - Carol decides that the kitchen floor needs to be mopped every day.
