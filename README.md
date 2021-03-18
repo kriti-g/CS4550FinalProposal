@@ -42,7 +42,8 @@ An object linking multiple users together in the same
 group. A group may have many users, but a user may not have many groups, as the
 assumption is that a user only lives in one home at a time, or at the very least
 only has one home in which they are an integral part of keeping the place running.
-Tentatively, a group may have many users, many chores, a home address, and a name.
+Tentatively, a group may have many users, many chores, a home address, a name,
+and a rotation order.
 
 ##### A Chore
 An object representing a chore. A chore belongs to a Roommate Group and should
@@ -118,6 +119,8 @@ roommates.
 to the group upon registration. She cannot create a new group unless she leaves
 this one.
 - Carol is able to access the join link and send it to her housemates again if needed.
+- As everyone joins the group, they are added to its rotation order. This ends up
+as Dave -> Carol -> Bob -> Alice
 
 ##### Chore creation
 - Carol decides that the kitchen floor needs to be mopped every day.
@@ -137,7 +140,8 @@ mopping the floor, to be completed today.
 "Complete" on the "Mopping kitchen floor" chore that she can find on her list of
 chores.
 - Seeing as the rotation for this chore is 1, the chore is removed from Alice's
-list as she is no longer assigned to it, and is instead reassigned to Bob.
+list as she is no longer assigned to it, and is instead reassigned to Dave, the
+next user in the group's chore rotation order.
 - Dave receives a text message informing him that he has been assigned to mopping
 the floor, to be completed by tomorrow.
 
@@ -153,18 +157,17 @@ this chore as it has been deleted.
 - When Alice logs in and checks the group chore page, she can no longer see the
 chore on the page.
 
+##### Group Leaving
+- Carol gets a new job in a different city and moves out.
+- She logs in to the web app and navigates to her group page.
+- On the page, she clicks the "Leave Group" button, is prompted to check if
+she's sure, clicks yes.
+- All chores assigned to Carol are reassigned to the next member in the
+group rotation, Bob.
+- Bob receives a text message informing him of his new chores.
+
+#### Experiment 1 - Accessing the Twilio API from the Phoenix Server and sending a text message.
 
 
 
-- Who’s on your team?
-- What’s your project idea?
-- What API do you plan to use?
-- What realtime behavior are you planning?
-- What persistent state other than users will you be storing in a postgres DB?
-- What “something neat” thing are you going to do?
-- For each experiment:
-What did you try?
-What was the result?
-What did you learn?
-- What kinds of users do you expect to have use your app?
-- For each kind of users, what is their most common workflow / user story?
+#### Experiment 2 - Using the HTML Location API to find the distance between two users
