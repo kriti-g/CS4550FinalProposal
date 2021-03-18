@@ -7,6 +7,8 @@ defmodule HtmlLocationExperiment.Application do
 
   def start(_type, _args) do
     children = [
+      # Start cache
+      {HtmlLocationExperiment.Cache, %{id: 0}},
       # Start the Telemetry supervisor
       HtmlLocationExperimentWeb.Telemetry,
       # Start the PubSub system

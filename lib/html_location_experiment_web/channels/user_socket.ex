@@ -3,6 +3,7 @@ defmodule HtmlLocationExperimentWeb.UserSocket do
 
   ## Channels
   # channel "room:*", HtmlLocationExperimentWeb.RoomChannel
+  channel "general:*", HtmlLocationExperimentWeb.General
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
