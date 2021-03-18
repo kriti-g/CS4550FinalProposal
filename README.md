@@ -32,7 +32,21 @@ only has one home in which they are an integral part of keeping the place runnin
 Tentatively, a group may have many users, many chores, a home address, and a name.
 
 ##### A Chore
-An object representing a chore. A chore belongs to a Roommate Group 
+An object representing a chore. A chore belongs to a Roommate Group and should
+have a name, information on what the chore is, when it should be completed by,
+who should be completing it, as well as how often the responsibility for it should
+rotate. For example, a roommate may be in charge of the dishes for three days in
+a row before it becomes another roommate's responsibility. This person should be
+able to mark the chore off three times (and have the expected time of completion
+change accordingly) before it is reassigned to someone else in their group.
+
+A chore should be linked to a user through some intermediate object
+(e.g. a Responsibility) such that a chore requiring that more than one user be
+involved in completing it can exist.
+
+##### A Responsibility
+
+
 
 
 - Who’s on your team?
