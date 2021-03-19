@@ -9,6 +9,11 @@ Used the standard javascript navigator to request location from user. This gives
 
 ## What was the result:
 Success, the javascript can successfully get the coordinates, and elixir can do math.
+![Accuracy Verification](./Testing_Screenshots/Accuracy_Verification.png)
+
+![Test1 - Same Location](./Testing_Screenshots/Test1-Same_Location.png)
+
+![Test2 - Different Locations](./Testing_Screenshots/Test2-Different_Location.png)
 
 ## What we learned:
 Getting the distance is relatively easy, as it is easy to get a user's location using javascript.
