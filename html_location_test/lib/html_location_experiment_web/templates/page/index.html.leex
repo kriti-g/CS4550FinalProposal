@@ -1,0 +1,14 @@
+<div id="root">
+  <div id="distances">
+    <ul>
+      <%= for {k, distance} <- @distances do %>
+        <li>
+          <%= k %> - <%= distance %> meters apart
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <button id="location_button"> Update Location </button>
+  </div>
+</div>
