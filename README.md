@@ -164,7 +164,15 @@ chore on the page.
 she's sure, clicks yes.
 - All chores assigned to Carol are reassigned to the next member in the
 group rotation, Bob.
+- Carol is removed from the group rotation.
 - Bob receives a text message informing him of his new chores.
+
+
+- Special case: every group member decides to move and pass on renewing the lease.
+- They all leave the group one by one, triggering the same results as Carol.
+- When the last person, Alice, leaves, the group deletes itself. This deletes
+all of its associated Chores and Responsibilities as well. This action cannot
+be undone.
 
 #### Experiment 1 - Accessing the Twilio API from the Phoenix Server and sending a text message.
 
@@ -172,10 +180,26 @@ This experiment was carried out to ensure that we can use our intended main API.
 The first step was to make an account that would be able to provide API
 credentials, and then provide the token to the Phoenix server by replacing
 the encodedToken parameters in the Page Controller with the proper
-credentials. From there, we were able to use the Httpoison Elixir library to
-make an external post request to Twilio to send the text message. Interestingly,
-we learned that Httpoison only functions with an authorization token encoded in
+credentials. From there, we decided that the best way to make an HTTP request
+using Elixir was to add an outside library through a dependency. HTTPoison
+was the library we chose, as it allows you to make external post request and very
+easily input custom headers and content. This allowed us to make the post
+request to Twilio to send the text message. Interestingly, we learned that
+HTTPoison only functions with an authorization token encoded in
 base64, which is an additional layer of security.
+
+![Image](smsTest/phoenix-landing.png)
+![Image](smsTest/sms-phone.png)
+
+From there, we learned what a successful post response from Twilio looked like,
+which will allow us to control and validate text message sending from the
+server - for example, we may want to resend a text message if it does not send
+initially, or send a web app notification to the group member in question that
+their number cannot receive notifications.
+
+We were able to successfully send a text message from Elixir to a
+group member's phone number. This means that we have everything we need to
+successfully implement this feature in our final project.
 
 #### Experiment 2 - Using the HTML Location API to find the distance between two users
 
@@ -185,8 +209,13 @@ Using the HTML Location API, we were able to successfully find the distance
 between two users. We first used the API to request location from the user,
 which returned the user's longitude and latitude. From there, the distance
 between two coordinates can be found through trigonometry or more specifically
-the spherical law of cosines. This was tested by deploying the program and
+the spherical law of cosines. This was tested by first checking two users
+accessing the program from the same location, then deploying the program and
 having two group members access the website from completely different locations.
+
+![Test1 - Same Location](html_location_test/Testing_Screenshots/Test1-Same_Location.png)
+
+![Test2 - Different Locations](html_location_test/Testing_Screenshots/Test2-Different_Location.png)
 
 This math we decided would be best done on the server-side of things. Not only
 is Elixir capable of it, but this would prevent the client from having access
