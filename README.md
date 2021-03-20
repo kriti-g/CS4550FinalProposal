@@ -124,12 +124,12 @@ as Dave -> Carol -> Bob -> Alice.
 
 ##### Chore creation
 - Carol decides that the kitchen floor needs to be mopped every day.
-- She creates a new chore called "Mopping kitchen floor," with a desc
-"Thoroughly mop the kitchen floor using the swiffer," a rotation of 1 and
+- She creates a new chore called "Mopping kitchen floor," with a description
+"Thoroughly mop the kitchen floor using the Swiffer," a rotation of 1 and
 a frequency of 1.
 - She assigns the first rotation to Alice by adding her name during the creation
 process.
-- Upon hitting "Create" the chore is now visible to the entire group's on their
+- Upon hitting "Create" the chore is now visible to the entire group on their
 main page.
 
 ##### Chore completion
@@ -168,6 +168,35 @@ group rotation, Bob.
 
 #### Experiment 1 - Accessing the Twilio API from the Phoenix Server and sending a text message.
 
-
+This experiment was carried out to ensure that we can use our intended main API.
+The first step was to make an account that would be able to provide API
+credentials, and then provide the token to the Phoenix server by replacing
+the encodedToken parameters in the Page Controller with the proper
+credentials. From there, we were able to use the Httpoison Elixir library to
+make an external post request to Twilio to send the text message. Interestingly,
+we learned that Httpoison only functions with an authorization token encoded in
+base64, which is an additional layer of security.
 
 #### Experiment 2 - Using the HTML Location API to find the distance between two users
+
+This experiment was carried out to ensure that we can accomplish what we
+wanted for our additional "something neat" feature.
+Using the HTML Location API, we were able to successfully find the distance
+between two users. We first used the API to request location from the user,
+which returned the user's longitude and latitude. From there, the distance
+between two coordinates can be found through trigonometry or more specifically
+the spherical law of cosines. This was tested by deploying the program and
+having two group members access the website from completely different locations.
+
+This math we decided would be best done on the server-side of things. Not only
+is Elixir capable of it, but this would prevent the client from having access
+to any location that is not that of its own user. If the math were run in JS,
+it would present a serious security issue of any logged in user being able to
+essentially track all of their roommates' locations if they chose to - *not*
+an intended feature.
+
+In the future we considered that we may want to have the longitude and latitude
+data of a specific address, such as the group's home address, which could be
+handled through a geocoding API such as PositionStack. However, for now we have
+ascertained that the feature is possible and fully implementable in our final
+project, which was the goal.
